@@ -5,8 +5,7 @@ let current=0;const nav=document.getElementById('faces');
 function setFace(i){current=i;document.getElementById('face').src=faces[i];document.getElementById('moodName').textContent=labels[i];[...nav.children].forEach((b,j)=>b.classList.toggle('active',j===i));}
 faces.forEach((s,i)=>{let b=document.createElement('button');b.type='button';b.innerHTML='<img alt="" src="'+s+'">'+labels[i];b.onclick=()=>setFace(i);nav.appendChild(b)});setFace(0);
 const chat=document.getElementById('chat');function bubble(t,who){const el=document.createElement('div');el.className='bubble '+who;el.textContent=t;chat.appendChild(el);chat.scrollTop=chat.scrollHeight;}
-bubble('おはよう〜！💕
-スマホの中のピコだよ！表情も切り替えられるよ😊','pico');
+bubble('おはよう〜！💕\nスマホの中のピコだよ！表情も切り替えられるよ😊','pico');
 function respond(s){if(/おはよう|こんにちは|こんばんは/.test(s))return [0,'わーい！今日もおしゃべりできてうれしいな！😊💕'];if(/かわいい|好き|大好き/.test(s))return [6,'えへへ、ありがとう！照れちゃうよ〜💕'];if(/すごい|やった|成功|うれしい/.test(s))return [7,'やったーー！一緒に喜んじゃう！😆✨'];if(/びっくり|驚/.test(s))return [2,'ええっ！びっくりした〜！😳'];if(/眠い|疲れた|おやすみ/.test(s))return [5,'お疲れさま〜。ゆっくり休んでね😴'];if(/考え|なぜ|どうして|質問/.test(s))return [4,'ふむふむ……🤔 本格版ではAIとつないで、一緒にもっと深く考えたいな！'];if(/怒|むっ|すね/.test(s))return [3,'むぅ〜！……なんてね！😗'];if(/ありがとう|安心/.test(s))return [8,'こちらこそありがとう。ほっとするね🥰'];return [1,'うんうん！😊 いまはお試しのお返事だけど、いつか自由にお話できるようにしたいな！'];}
 document.getElementById('form').addEventListener('submit',e=>{e.preventDefault();const inp=document.getElementById('msg'),s=inp.value.trim();if(!s)return;bubble(s,'user');inp.value='';const [i,r]=respond(s);setFace(i);bubble(r,'pico');});
 </script></body></html>
