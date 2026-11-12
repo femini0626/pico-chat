@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ピコ動作確認</title><style>body{font-family:-apple-system,sans-serif;background:#fff0fa;color:#75466a;padding:24px;text-align:center}main{max-width:480px;margin:auto}section{background:white;border:2px solid #f3b9dc;border-radius:22px;padding:24px;margin:20px 0}button{background:#e878b9;color:white;border:0;border-radius:18px;padding:14px 24px;font-size:17px}input{padding:12px;border:1px solid #dda9cd;border-radius:14px;font-size:16px;max-width:60%}#face{font-size:70px}#status{font-weight:bold}</style></head><body><main><h1>🌸 2Dピコ 動作テスト</h1><section><div id="face">😊</div><p id="status">JavaScriptの起動を確認中…</p><button id="change" type="button">表情を変える ♡</button></section><section><p id="reply">ピコ：おはよう！💕</p><form id="chat"><input id="message" placeholder="話しかけてね" required><button type="submit">送信</button></form></section><small>テスト版：画像なし・AI接続なし</small></main><script>
+(function(){
+'use strict';
+var status=document.getElementById('status');
+var face=document.getElementById('face');
+var reply=document.getElementById('reply');
+var expressions=['😊','😆','😳','🤔','🥰'];
+var index=0;
+status.textContent='✅ JavaScriptが動いているよ！';
+document.getElementById('change').addEventListener('click',function(){index=(index+1)%expressions.length;face.textContent=expressions[index];status.textContent='✅ 表情が切り替わったよ！';});
+document.getElementById('chat').addEventListener('submit',function(e){e.preventDefault();var input=document.getElementById('message');var msg=input.value.trim();if(!msg)return;reply.textContent='ピコ：『'+msg+'』って言ってくれたね！お話できてうれしいな 😊💕';face.textContent='🥰';status.textContent='✅ 送信できたよ！';input.value='';});
+})();
+</script></body></html>
